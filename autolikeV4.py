@@ -8,18 +8,43 @@ import os
 from tkinter import *
 import sys
 
+import os, json
+from django.core.exceptions import ImproperlyConfigured
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+
+secret_file = os.path.join(BASE_DIR, 'secrets.json')  # secrets.json 파일 위치를 명시
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting):
+    """비밀 변수를 가져오거나 명시적 예외를 반환한다."""
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
+
+SECRET_Id = get_secret("Naver_Id")
+SECRET_Pw = get_secret("Naver_Pw")
+
 window = Tk()
 window.title("선택적공감머신")
 window.geometry("500x500")
 window.resizable(False, False)
+
 
 def main_1():
     # 크롬 드라이버 경로 지정. os를 스지 않고 가능하다면 해보자.
     driverFolder : str= os.getcwd()+'/selenium/chromedriver.exe'
 
     #자신의 아이디, 비밀번호
-    yourid : str = "id를 입력해주세요"
-    yourpassword : str = "비밀번호를 입력해주세요!"
+    yourid : str = SECRET_Id
+    yourpassword : str = SECRET_Pw
 
     # 좋아요를 누르기 전 스크롤을 할 때 스크롤 최소, 최대 시간
     scrollMinPauseTime : float = 0.5
