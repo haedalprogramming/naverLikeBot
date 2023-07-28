@@ -12,3 +12,7 @@ https://wikidocs.net/21952
 [프로그램 바로가기]()
 ### OS별 Selenium 다운로드
 [Selenuim 다운받기](https://www.selenium.dev/)
+## 코드 간단 설명
+autolike.py: 이웃 추천을 공감하는 코드
+Search_Autolike.py: 블로그 검색후 공감하는 코드
+autolikeV4.py: 통합 GUI
