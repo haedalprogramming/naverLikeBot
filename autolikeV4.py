@@ -39,6 +39,8 @@ window.resizable(False, False)
 
 
 def main_1():
+    print("Start at:")
+    print(datetime.today().strftime("%Y/%m/%d %H:%M:%S"))
     # 크롬 드라이버 경로 지정. os를 스지 않고 가능하다면 해보자.
     driverFolder : str= os.getcwd()+'/selenium/chromedriver.exe'
 
@@ -214,6 +216,8 @@ def main_1():
                 
     driver.quit()
 def main_2():
+    print("Start at:")
+    print(datetime.today().strftime("%Y/%m/%d %H:%M:%S"))
     driverFolder : str= os.getcwd()+'/selenium/chromedriver.exe'
 
     #자신의 아이디, 비밀번호
@@ -388,6 +392,8 @@ def main_2():
                 
     driver.quit()
 def main_3():
+    print("Start at:")
+    print(datetime.today().strftime("%Y/%m/%d %H:%M:%S"))
     # global search
     # search=input("검색어를 입력하세요.")
     # 크롬 드라이버 경로 지정. os를 스지 않고 가능하다면 해보자.
